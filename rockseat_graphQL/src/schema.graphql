@@ -1,0 +1,18 @@
+
+// coloca um formato para o usuario para se utilizar em users
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+
+// busca a informacao
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+}
+// alterar ou excluir ou adicionar alguma informacao
+type Mutation {
+  createUser(name: String!, email: String!): User
+}
