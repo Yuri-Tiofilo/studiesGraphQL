@@ -33,7 +33,15 @@ const resolvers = {
       return usuario.salary_real
     }
   },
-  
+  Produto: {
+    precoComDesconto(produto){
+      if(produto.desconto){
+        return produto.preco * (1 - produto.desconto)
+      }else{
+        return produto.preco
+      }
+    }
+  },
 
   Query: {
     ola(){
@@ -56,7 +64,7 @@ const resolvers = {
       return{
         nome: 'Celular iphone',
         preco: 10.569,
-        desconto: 0.15,
+        desconto: 0.5,
       }
     }
   }
