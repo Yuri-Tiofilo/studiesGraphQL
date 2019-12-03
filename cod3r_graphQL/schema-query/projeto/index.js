@@ -1,5 +1,22 @@
 const {ApolloServer, gql} = require('apollo-server')
 
+const usuarios = [{
+  id: 1,
+  name: "yuri",
+  email: "yuri@incca.com.br",
+  age: 18,
+},{
+  id: 2,
+  name: "felipe",
+  email: "felipe@incca.com.br",
+  age: 26,
+},{
+  id: 3,
+  name: "paulo",
+  email: "paulo@incca.com.br",
+  age: 28,
+}]
+
 const typeDefs = gql`
   scalar Date
 
@@ -25,6 +42,7 @@ const typeDefs = gql`
     usuarioLogado: User
     produtoEmDestaque: Produto
     numerosMegaSena: [Int!]
+    usuarios: [User]
   }
 `
 
@@ -72,6 +90,9 @@ const resolvers = {
       // return [1,2,4,5,6]
       const cresente = (a,b) => a - b
       return Array(6).fill(0).map(n => parseInt(Math.random() * 60 + 1)).sort(cresente) 
+    },
+    usuarios() {
+      return usuarios
     }
   }
 
